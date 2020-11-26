@@ -1,0 +1,23 @@
+http:
+  port: '8082' 
+  
+mytrains:
+  host: 'localhost'
+  port: '8081'
+  protocol: 'HTTP'
+  basePath: '/api'
+   
+okta:
+  host: 'localhost'
+  port: '8084'
+  protocol: 'HTTP'
+  basePath: '/okta/sys/api/v1'
+  header:
+      clientId: "2f9f2d34-cf0d-44d0-bac3-636182f402db"
+      clientSecret: "921867d0-f78f-4137-aa21-b21bdf0590bc"
+       
+json:
+  logger:
+    application:
+      name: "mytrains-system-api"
+      version: "1.0.0-SNAPSHOT"

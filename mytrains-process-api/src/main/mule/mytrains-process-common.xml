@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:okta-system-api="http://www.mulesoft.org/schema/mule/okta-system-api" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:json-logger="http://www.mulesoft.org/schema/mule/json-logger" xmlns:my-trains-system-api="http://www.mulesoft.org/schema/mule/my-trains-system-api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation=" http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd  http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/json-logger http://www.mulesoft.org/schema/mule/json-logger/current/mule-json-logger.xsd http://www.mulesoft.org/schema/mule/my-trains-system-api http://www.mulesoft.org/schema/mule/my-trains-system-api/current/mule-my-trains-system-api.xsd
+http://www.mulesoft.org/schema/mule/okta-system-api http://www.mulesoft.org/schema/mule/okta-system-api/current/mule-okta-system-api.xsd">
+    <http:listener-config name="httpListenerConfig">
+        <http:listener-connection host="0.0.0.0" port="${http.port}" />
+    </http:listener-config>
+    <apikit:config name="myTrainsProcessApiConfig" api="resource::cd5bf5d6-a7c5-40f7-a8db-9f1046bbc2fd:mytrains-process-api:1.0.2:raml:zip:mytrains-process-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+    <configuration-properties doc:name="Configuration properties" doc:id="0bf29b65-5e29-40ac-9873-652926f1d663" file="config/mytrains.process.api.${env}.yaml" />
+    <global-property doc:name="Global Property" doc:id="35acdca0-de3f-488a-999d-373cfe046adf" name="env" value="dev" />
+    <json-logger:config name="jsonLoggerConfig" doc:name="JSON Logger Config" doc:id="af42e9d8-c599-4acc-9a95-fdf6b552f2e1" environment="${env}" />
+    <my-trains-system-api:config name="myTrainsSystemAPIConfig" doc:name="MyTrains System API Config" doc:id="ead06adb-6bd1-46a3-8e33-db86d90f3023" property_host="${mytrains.host}" property_port="${mytrains.port}" property_protocol="${mytrains.protocol}" property_basePath="${mytrains.basePath}" />
+	<okta-system-api:config name="oktaSystemAPIConfig" doc:name="Okta System API Config" doc:id="6a8d53da-9ad4-4a8a-89c1-b6728245df11" property_host="${okta.host}" property_port="${okta.port}" property_protocol="${okta.protocol}" property_basePath="${okta.basePath}" />
+</mule>
