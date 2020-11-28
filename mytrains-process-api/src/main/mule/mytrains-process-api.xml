@@ -102,7 +102,7 @@ output application/json
                 <http:headers><![CDATA[#[vars.outboundHeaders default {}]]]></http:headers>
             </http:error-response>
         </http:listener>
-        <apikit:console config-ref="myTrainsProcessApiConfig" />
+        <apikit:console config-ref="myTrainsProcessApiConfig" doc:id="17785232-5a94-46e1-9b31-2ad39f66111e"/>
         <error-handler>
             <on-error-propagate type="APIKIT:NOT_FOUND">
                 <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">

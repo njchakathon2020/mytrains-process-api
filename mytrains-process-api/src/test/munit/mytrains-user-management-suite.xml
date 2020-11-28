@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="mytrains-user-management-suite.xml" />
+	<munit:test name="mytrains-retrieve-user-flow-test" doc:id="f2518e7f-30ef-427a-a6a7-7d5cf73fbdc8" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock Get User" doc:id="2f280e7b-a68d-4fee-a4c1-e468ed9694e9" processor="my-trains-system-api:get-user">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="3e378d47-0d85-4e5e-a94a-a75c0a182267" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://mytrainsretrieveuserflowtest\mock_payload.dwl')]" mediaType="application/json" />
+					<munit-tools:attributes value="#[readUrl('classpath://mytrainsretrieveuserflowtest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://mytrainsretrieveuserflowtest\mock_variable_.dwl')]" />
+						<munit-tools:variable key="id" value="#[output application/java --- readUrl('classpath://mytrainsretrieveuserflowtest\mock_variable_1.dwl')]" mediaType="application/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="dc88ea8e-a014-4844-a4ff-030e6d101cf6" >
+				<munit:payload value="#[readUrl('classpath://mytrainsretrieveuserflowtest\set-event_payload.dwl')]" encoding="UTF-8" />
+				<munit:attributes value="#[readUrl('classpath://mytrainsretrieveuserflowtest\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://mytrainsretrieveuserflowtest\set-event_variable_.dwl')]" />
+					<munit:variable key="id" value="#[output application/java --- readUrl('classpath://mytrainsretrieveuserflowtest\set-event_variable_1.dwl')]" encoding="UTF-8" mediaType="application/java" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to mytrains-retrieve-user-flow" doc:id="c466ff04-5a86-4bfc-90de-3705b79fdeda" name="mytrains-retrieve-user-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="55ec5b1b-deac-4176-9264-1dbdf1c56b9d" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import mytrainsretrieveuserflowtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="mytrains-retrieve-subscription-flow-test" doc:id="78d1ec42-ecfd-4caa-87b5-db32da87000e" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock Get Subscription" doc:id="1d11494f-b359-4693-b63c-5fcc13ae0994" processor="my-trains-system-api:get-subscription">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="d919cc72-b743-4583-a0d6-4281863c4811" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://mytrainsretrievesubscriptionflowtest\mock_payload.dwl')]" mediaType="application/json" />
+					<munit-tools:attributes value="#[readUrl('classpath://mytrainsretrievesubscriptionflowtest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="subid" value="#[output application/java --- readUrl('classpath://mytrainsretrievesubscriptionflowtest\mock_variable_.dwl')]" mediaType="application/java" encoding="UTF-8" />
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://mytrainsretrievesubscriptionflowtest\mock_variable_1.dwl')]" />
+						<munit-tools:variable key="id" value="#[output application/java --- readUrl('classpath://mytrainsretrievesubscriptionflowtest\mock_variable_2.dwl')]" mediaType="application/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="76ce7c75-1b24-47a9-879b-9cb9d3b90e3a" >
+				<munit:payload value="#[output application/json --- readUrl('classpath://mytrainsretrievesubscriptionflowtest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://mytrainsretrievesubscriptionflowtest\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="subid" value="#[output application/java --- readUrl('classpath://mytrainsretrievesubscriptionflowtest\set-event_variable_.dwl')]" encoding="UTF-8" mediaType="application/java" />
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://mytrainsretrievesubscriptionflowtest\set-event_variable_1.dwl')]" />
+					<munit:variable key="id" value="#[output application/java --- readUrl('classpath://mytrainsretrievesubscriptionflowtest\set-event_variable_2.dwl')]" encoding="UTF-8" mediaType="application/java" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to mytrains-retrieve-subscription-flow" doc:id="a2a401ff-715e-4bb3-8306-fd7c28fff9ae" name="mytrains-retrieve-subscription-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="d1b734a9-8949-44b6-8bee-948c958243bb" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import mytrainsretrievesubscriptionflowtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="mytrains-remove-subscription-flow-test" doc:id="2cd25c0b-9bb3-4745-a6fd-2afbdea83d05" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock Remove Subscription" doc:id="55302698-0df1-4175-b444-8e21aef51a50" processor="my-trains-system-api:remove-subscription">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="fb1eb4f9-05bb-471d-a4b0-4f42401764c6" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://mytrainsremovesubscriptionflowtest\mock_payload.dwl')]" mediaType="application/json" />
+					<munit-tools:attributes value="#[readUrl('classpath://mytrainsremovesubscriptionflowtest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="subid" value="#[output application/java --- readUrl('classpath://mytrainsremovesubscriptionflowtest\mock_variable_.dwl')]" mediaType="application/java" encoding="UTF-8" />
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://mytrainsremovesubscriptionflowtest\mock_variable_1.dwl')]" />
+						<munit-tools:variable key="id" value="#[output application/java --- readUrl('classpath://mytrainsremovesubscriptionflowtest\mock_variable_2.dwl')]" mediaType="application/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="a9d41868-6c2d-40b7-9bf5-83898a55099a" >
+				<munit:payload value="#[output application/json --- readUrl('classpath://mytrainsremovesubscriptionflowtest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://mytrainsremovesubscriptionflowtest\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="subid" value="#[output application/java --- readUrl('classpath://mytrainsremovesubscriptionflowtest\set-event_variable_.dwl')]" encoding="UTF-8" mediaType="application/java" />
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://mytrainsremovesubscriptionflowtest\set-event_variable_1.dwl')]" />
+					<munit:variable key="id" value="#[output application/java --- readUrl('classpath://mytrainsremovesubscriptionflowtest\set-event_variable_2.dwl')]" encoding="UTF-8" mediaType="application/java" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to mytrains-remove-subscription-flow" doc:id="7d189bf3-8437-40fb-97d7-66a708ff4294" name="mytrains-remove-subscription-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="e20124be-e91f-457c-9a1a-eb059d567cf9" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import mytrainsremovesubscriptionflowtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="mytrains-retrieve-subscriptions-flow-test" doc:id="89cb3a78-d10d-4d5b-bdbf-c9bfcea35313" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock Get All Susbscription" doc:id="1175ca7d-fcd4-47e3-9548-e9968f34ae02" processor="my-trains-system-api:get-all-susbscription">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="9a814051-4eb1-4acf-91b4-b4bafc172a2a" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://mytrainsretrievesubscriptionsflowtest\mock_payload.dwl')]" mediaType="application/json" />
+					<munit-tools:attributes value="#[readUrl('classpath://mytrainsretrievesubscriptionsflowtest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://mytrainsretrievesubscriptionsflowtest\mock_variable_.dwl')]" />
+						<munit-tools:variable key="id" value="#[output application/java --- readUrl('classpath://mytrainsretrievesubscriptionsflowtest\mock_variable_1.dwl')]" mediaType="application/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="e6403d4b-eb4a-49c3-a5b7-127a0435639b" >
+				<munit:payload value="#[output application/json --- readUrl('classpath://mytrainsretrievesubscriptionsflowtest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://mytrainsretrievesubscriptionsflowtest\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://mytrainsretrievesubscriptionsflowtest\set-event_variable_.dwl')]" />
+					<munit:variable key="id" value="#[output application/java --- readUrl('classpath://mytrainsretrievesubscriptionsflowtest\set-event_variable_1.dwl')]" encoding="UTF-8" mediaType="application/java" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to mytrains-retrieve-subscriptions-flow" doc:id="44f4fb6d-de35-400a-8484-39311b947de7" name="mytrains-retrieve-subscriptions-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="e6baadf0-640c-4da8-bf9d-f623a74dfe54" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import mytrainsretrievesubscriptionsflowtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

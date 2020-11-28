@@ -2,8 +2,8 @@ http:
   port: '8082' 
   
 mytrains:
-  host: 'localhost'
-  port: '8081'
+  host: 'mytrains-system-api.us-e2.cloudhub.io'
+  port: '80'
   protocol: 'HTTP'
   basePath: '/api'
    
@@ -30,8 +30,8 @@ nre:
   basePath: '/api'  
   
 trains:
-  host: 'localhost'
-  port: '8085'
+  host: 'train-details-system-api.us-e2.cloudhub.io'
+  port: '80'
   protocol: 'HTTP'
   basePath: '/api'          
        
