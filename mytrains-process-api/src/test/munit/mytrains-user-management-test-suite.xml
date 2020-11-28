@@ -8,10 +8,5 @@
 		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
 	<munit:config name="mytrains-user-management-test-suite.xml" />
-	<munit:test name="mytrains-user-management-test-suite-mytrains-retrieve-subscription-flowTest" doc:id="d70b0abf-eaf0-4eb9-8ed7-5c50b5942c23" description="Test">
-		<munit:execution >
-			<flow-ref doc:name="Flow-ref to mytrains-retrieve-subscription-flow" doc:id="08949751-db4e-4185-9cdc-8e26f24c17a9" name="mytrains-retrieve-subscription-flow"/>
-		</munit:execution>
-	</munit:test>
 
 </mule>

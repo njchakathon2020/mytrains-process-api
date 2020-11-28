@@ -111,21 +111,39 @@
         </dependency>
     	<dependency>
             <groupId>cd5bf5d6-a7c5-40f7-a8db-9f1046bbc2fd</groupId>
+            <artifactId>mule-plugin-national-rail-system-api</artifactId>
+            <version>1.0.0</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+    	<dependency>
+            <groupId>cd5bf5d6-a7c5-40f7-a8db-9f1046bbc2fd</groupId>
+            <artifactId>mule-plugin-traindetails-system-api</artifactId>
+            <version>1.0.2</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+    	<dependency>
+            <groupId>cd5bf5d6-a7c5-40f7-a8db-9f1046bbc2fd</groupId>
             <artifactId>mule-plugin-mytrains-system-api</artifactId>
+            <version>1.0.7</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+    	<dependency>
+            <groupId>cd5bf5d6-a7c5-40f7-a8db-9f1046bbc2fd</groupId>
+            <artifactId>mule-plugin-locations-system-api</artifactId>
             <version>1.0.5</version>
             <classifier>mule-plugin</classifier>
         </dependency>
     	<dependency>
             <groupId>cd5bf5d6-a7c5-40f7-a8db-9f1046bbc2fd</groupId>
             <artifactId>mytrains-process-api</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.6</version>
             <classifier>raml</classifier>
             <type>zip</type>
         </dependency>
     	<dependency>
             <groupId>cd5bf5d6-a7c5-40f7-a8db-9f1046bbc2fd</groupId>
             <artifactId>mule-plugin-okta-system-api</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
             <classifier>mule-plugin</classifier>
         </dependency>
     </dependencies>
