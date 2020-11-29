@@ -64,6 +64,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<flow name="mytrains-user-forgot-password-flow" doc:id="bcf79df7-8f18-4ca7-8683-212a12861fad" >
 		<json-logger:logger doc:name="flowBegin" doc:id="f0f95d60-b2f2-45fe-afd5-605c7ac44769" config-ref="jsonLoggerConfig" message="Payload in the beginning of the flow"/>
 		<my-trains-system-api:get-userid doc:name="Get UserId" doc:id="162aec9a-399d-4719-82a0-f8c2fde24372" config-ref="myTrainsSystemAPIConfig" username="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="1472547a-a969-4486-a30f-dfaf46f522e8" message="#[payload.userId]"/>
 		<okta-system-api:forgot-password doc:name="Forgot Password" doc:id="be45116f-caf8-43a1-9e33-6bac034c0c6e" config-ref="oktaSystemAPIConfig"  x-api-client-key="${okta.header.clientId}" x-api-client-secret="${okta.header.clientSecret}" user-id="#[payload.userId]"/>
 		<json-logger:logger doc:name="flowEnd" doc:id="223f44ab-f2e8-4402-aebf-3c6ae566a552" config-ref="jsonLoggerConfig" message="Payload at the end of the flow"/>
 	</flow>

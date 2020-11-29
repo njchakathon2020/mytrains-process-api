@@ -265,6 +265,183 @@ assert_expression_payload::main({payload: payload, attributes: attributes, vars:
 			<munit-tools:assert-equals doc:name="Assert equals" doc:id="a4f9f331-5d71-46c9-ba3a-e671e87c4ca7" actual="#[payload]" expected='#[{message: "Not Implemented"}]' />
 		</munit:validation>
 	</munit:test>
+	<munit:test name="delete:\users\(userId)\subscription\(subscriptionId):myTrainsProcessApiConfig-test" doc:id="c70735fe-b146-4694-8673-3f7d1833abd4" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock mytrains-remove-subscription-flow" doc:id="25051788-db71-4388-bb0f-60fb0de88e4d" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="8df531d2-7f08-4a74-90db-00552924394c" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://deleteusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\mock_payload.dwl')]" mediaType="application/json" />
+					<munit-tools:attributes value="#[readUrl('classpath://deleteusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://deleteusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\mock_variable_.dwl')]" />
+						<munit-tools:variable key="subscriptionId" value="#[output application/java --- readUrl('classpath://deleteusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\mock_variable_1.dwl')]" mediaType="application/java" encoding="UTF-8" />
+						<munit-tools:variable key="userId" value="#[output application/java --- readUrl('classpath://deleteusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\mock_variable_2.dwl')]" mediaType="application/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="c87eaeb0-7f90-47ba-ad6a-40680d72ba0b" >
+				<munit:payload value="#[readUrl('classpath://deleteusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\set-event_payload.dwl')]" encoding="UTF-8" />
+				<munit:attributes value="#[readUrl('classpath://deleteusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://deleteusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to delete:\users\(userId)\subscription\(subscriptionId):myTrainsProcessApiConfig" doc:id="ea24e983-d22f-441d-b8b6-bf75a18e1bc3" name="delete:\users\(userId)\subscription\(subscriptionId):myTrainsProcessApiConfig"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="037c4c56-62ee-42e9-932d-5515cb856d5b" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import deleteusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="get:\users\(userId)\subscription:myTrainsProcessApiConfig-test" doc:id="bd4b7ace-a5c7-44f7-8cbc-685e5945bfbf" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock mytrains-retrieve-subscriptions-flow" doc:id="5d21da20-e094-4133-a9e1-c311609dc219" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="bf9dc4aa-77de-466b-bf1e-22d5bb238425" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://getusersuserIdsubscriptionmyTrainsProcessApiConfigtest\mock_payload.dwl')]" mediaType="application/json" />
+					<munit-tools:attributes value="#[readUrl('classpath://getusersuserIdsubscriptionmyTrainsProcessApiConfigtest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://getusersuserIdsubscriptionmyTrainsProcessApiConfigtest\mock_variable_.dwl')]" />
+						<munit-tools:variable key="userId" value="#[output application/java --- readUrl('classpath://getusersuserIdsubscriptionmyTrainsProcessApiConfigtest\mock_variable_1.dwl')]" mediaType="application/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="6728f73f-e6f9-4b12-a01e-aa5ad6cd6a46" >
+				<munit:payload value="#[readUrl('classpath://getusersuserIdsubscriptionmyTrainsProcessApiConfigtest\set-event_payload.dwl')]" encoding="UTF-8" />
+				<munit:attributes value="#[readUrl('classpath://getusersuserIdsubscriptionmyTrainsProcessApiConfigtest\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://getusersuserIdsubscriptionmyTrainsProcessApiConfigtest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\users\(userId)\subscription:myTrainsProcessApiConfig" doc:id="d9648465-08c5-4f0f-90de-cc4b5058c805" name="get:\users\(userId)\subscription:myTrainsProcessApiConfig"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="896076b7-8210-4a7d-9d57-48e09c0e39e2" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import getusersuserIdsubscriptionmyTrainsProcessApiConfigtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="get:\users\(userId)\subscription\(subscriptionId):myTrainsProcessApiConfig-test" doc:id="790f1e31-6725-4cf0-b2af-113fd9a41a77" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock mytrains-retrieve-subscription-flow" doc:id="ab608784-7d79-481f-a39b-243a53b97279" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="3e0a83fa-eabb-4649-9751-98fb21bcb191" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://getusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\mock_payload.dwl')]" mediaType="application/json" />
+					<munit-tools:attributes value="#[readUrl('classpath://getusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://getusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\mock_variable_.dwl')]" />
+						<munit-tools:variable key="subscriptionId" value="#[output application/java --- readUrl('classpath://getusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\mock_variable_1.dwl')]" mediaType="application/java" encoding="UTF-8" />
+						<munit-tools:variable key="userId" value="#[output application/java --- readUrl('classpath://getusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\mock_variable_2.dwl')]" mediaType="application/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="fe001a14-64a8-483c-ac3a-c5c1f7bc2067" >
+				<munit:payload value="#[readUrl('classpath://getusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\set-event_payload.dwl')]" encoding="UTF-8" />
+				<munit:attributes value="#[readUrl('classpath://getusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://getusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\users\(userId)\subscription\(subscriptionId):myTrainsProcessApiConfig" doc:id="8fcf01a2-4afa-478b-bcf9-2fc5d7c93a50" name="get:\users\(userId)\subscription\(subscriptionId):myTrainsProcessApiConfig"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="191dd132-ef58-4c1d-91ee-739d963b593e" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import getusersuserIdsubscriptionsubscriptionIdmyTrainsProcessApiConfigtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="get:\users\(userId):myTrainsProcessApiConfig-test" doc:id="d11234c0-f610-4b60-be0e-b43c05ecf543" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock mytrains-retrieve-user-flow" doc:id="8eb4bd9c-1cd7-419e-8ae1-623c86506813" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="f70de513-17f7-4a9f-855e-1b1182b01546" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://getusersuserIdmyTrainsProcessApiConfigtest\mock_payload.dwl')]" mediaType="application/json" />
+					<munit-tools:attributes value="#[readUrl('classpath://getusersuserIdmyTrainsProcessApiConfigtest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://getusersuserIdmyTrainsProcessApiConfigtest\mock_variable_.dwl')]" />
+						<munit-tools:variable key="userId" value="#[output application/java --- readUrl('classpath://getusersuserIdmyTrainsProcessApiConfigtest\mock_variable_1.dwl')]" mediaType="application/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="a31df734-1cfa-42a6-ba73-6cc3251aba76" >
+				<munit:payload value="#[readUrl('classpath://getusersuserIdmyTrainsProcessApiConfigtest\set-event_payload.dwl')]" encoding="UTF-8" />
+				<munit:attributes value="#[readUrl('classpath://getusersuserIdmyTrainsProcessApiConfigtest\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://getusersuserIdmyTrainsProcessApiConfigtest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\users\(userId):myTrainsProcessApiConfig" doc:id="1090c1b6-b5c9-4624-9e96-ca9a7609ffc2" name="get:\users\(userId):myTrainsProcessApiConfig"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="534b3f92-4b54-4562-adae-57617dbcb4e9" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import getusersuserIdmyTrainsProcessApiConfigtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="post:\users\(userId)\subscription:application\json:myTrainsProcessApiConfig-test" doc:id="95baf21f-cf0e-494a-bcf9-ce3b4bfc9c4d" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock mytrains-insert-subscription-flow" doc:id="f94bbfb8-4daf-4e9b-b840-b163a7ea93f3" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="2999c3e5-f6fe-4461-b573-49a9cf6c0291" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://postusersuserIdsubscriptionapplicationjsonmyTrainsProcessApiConfigtest\mock_payload.dwl')]" mediaType="application/json" />
+					<munit-tools:attributes value="#[readUrl('classpath://postusersuserIdsubscriptionapplicationjsonmyTrainsProcessApiConfigtest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://postusersuserIdsubscriptionapplicationjsonmyTrainsProcessApiConfigtest\mock_variable_.dwl')]" />
+						<munit-tools:variable key="userId" value="#[output application/java --- readUrl('classpath://postusersuserIdsubscriptionapplicationjsonmyTrainsProcessApiConfigtest\mock_variable_1.dwl')]" mediaType="application/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="9502491a-87a6-4261-8bae-81aadb673f29" >
+				<munit:payload value="#[output application/json --- readUrl('classpath://postusersuserIdsubscriptionapplicationjsonmyTrainsProcessApiConfigtest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://postusersuserIdsubscriptionapplicationjsonmyTrainsProcessApiConfigtest\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://postusersuserIdsubscriptionapplicationjsonmyTrainsProcessApiConfigtest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\users\(userId)\subscription:application\json:myTrainsProcessApiConfig" doc:id="e7cf5ae4-2c41-4e1a-8e62-7869498987ab" name="post:\users\(userId)\subscription:application\json:myTrainsProcessApiConfig"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="4da87e8d-c801-4477-83b6-b8a027f1b631" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import postusersuserIdsubscriptionapplicationjsonmyTrainsProcessApiConfigtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
 
 
 </mule>
