@@ -1,7 +1,13 @@
 # mytrains-process-api
 
 ### About the project
-myTrains Process API manages user data, insert/retrieve station details with postalCodes
+myTrains Process API manages user data, insert/retrieve station details with postalCodes. This process api make calls to following system APIs
+* myTrains System API
+* National Rail System API
+* Okta System API
+* train Details System API
+
+Endpoints
 
 * Create User
 
