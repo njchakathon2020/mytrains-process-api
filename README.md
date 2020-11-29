@@ -67,7 +67,7 @@ User login with username and password
 Endpoint
 /login
 Method: POST
-Input payload has email and password
+Input payload has email(username) and password
 ```
 
 * Retrieve station Details
